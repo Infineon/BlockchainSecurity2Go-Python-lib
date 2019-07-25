@@ -12,6 +12,8 @@ If you are unsure what the name of your card reader is, use the command `blockse
 
 For this example the card reader uTrust 3700 F by the company Identiv was used:
 
+    reader_name = 'Identiv uTrust 3700 F'
+    ...
     reader = blocksec2go.find_reader(reader_name)
 
 This function returns us the reader as an object to be used with other commands from the blocksec2go library.
@@ -20,6 +22,15 @@ The command `select_app(reader)` has to be used in every application that tries 
 
     pin_active, card_id, version = blocksec2go.select_app(reader)
 
-`pin_active` is a bool that tells us if the card is locked with a PIN code.  
-The variable `card_id` is a unique card identifier which corresponds to that specific smartcard.  
-The string `version` shows the BlockSec2Go card firmware version.
+The bool `pin_active` that tells us if the card is locked with a PIN code.  
+The variable `card_id` is a unique card identifier which corresponds to that specific BlockSec2Go card.  
+The string `version` shows the card firmware version.
+
+Before you run the example script on your machine make sure to replace the string from `reader_name` with the name of your card reader. Also make sure that everything is connected and the BlockSec2Go card is placed properly on the reader.
+
+Your Output should look something like:
+
+    Found the specified reader and a card!
+    Is PIN enabled? True
+    Card ID (hex): 02090c2900020027000c
+    Version: v1.0
